@@ -1,0 +1,14 @@
+{
+  "feedback_enabled": true,
+  "max_lean_right": 10,
+  "max_lean_left": 10,
+  "max_lean_front": 10,
+  "max_lean_back": 10,
+  "last_connect_feedback": [
+  ],
+  "last_connect_sensors": [
+  ],
+  "local_time": "2024-01-01-01-00-00",
+  "save_mode": "xlsx",
+  "trial_name": "balance_trial_0"
+}

@@ -1,0 +1,145 @@
+{
+  "user_guide_file": "Standing Balance Trunk Front and Side Angle App Guide.pdf",
+  "app_name": "Standing Balance Trunk Front and Side Angle",
+  "app_description": "Measure and train trunk side and front angles during standing <br><br>Nodes Required: 5 <br> -Sensing (1): trunk (middle of back, switch pointing up) <br> -Feedback (4): feedback_left, feedback_right, feedback_front, feedback_back",
+  "app_id": "001",
+  "app_version": "1_2",
+  "version_id": "00112",
+  "validated_version_range": [
+    "3.10.0",
+    "4.1.0"
+  ],
+  "parameters_setting": [
+    [
+      "Feedback Settings",
+      {
+        "source": "feedback_enabled",
+        "title": "Feedback On",
+        "type": "bool",
+        "description": "Enable/Disable feedback"
+      },
+      {
+        "source": "max_lean_right",
+        "title": "Max Lean Right Angle",
+        "type": "float",
+        "validation": [
+          -90,
+          90
+        ],
+        "description": "Feedback given when Lean Right Angle is greater than this value"
+      },
+      {
+        "source": "max_lean_left",
+        "title": "Max Lean Left Angle",
+        "type": "float",
+        "validation": [
+          -90,
+          90
+        ],
+        "description": "Feedback given when Lean Left Angle is greater than this value"
+      },
+      {
+        "source": "max_lean_front",
+        "title": "Max Lean Front Angle",
+        "type": "float",
+        "validation": [
+          -90,
+          90
+        ],
+        "description": "Feedback given when Lean Front Angle is greater than this value"
+      },
+      {
+        "source": "max_lean_back",
+        "title": "Max Lean Back Angle",
+        "type": "float",
+        "validation": [
+          -90,
+          90
+        ],
+        "description": "Feedback given when Lean Back Angle is greater than this value"
+      }
+    ],
+    [
+      "Save Options",
+      {
+        "source": "save_mode",
+        "title": "Save Mode",
+        "type": "combo",
+        "validation": [
+          "csv",
+          "h5",
+          "xlsx"
+        ],
+        "description": "Save file in specified format"
+      }
+    ]
+  ],
+  "user_fields": [
+    {
+      "name": "time",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "TSA",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "TFA",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "max_lean_right",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "max_lean_left",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "max_lean_front",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "max_lean_back",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "right_feedback_state",
+      "data_type": "int",
+      "size": 1
+    },
+    {
+      "name": "left_feedback_state",
+      "data_type": "int",
+      "size": 1
+    },
+    {
+      "name": "front_feedback_state",
+      "data_type": "int",
+      "size": 1
+    },
+    {
+      "name": "back_feedback_state",
+      "data_type": "int",
+      "size": 1
+    }
+  ],
+  "sensors": [
+    "trunk"
+  ],
+  "feedback": [
+    "right feedback",
+    "left feedback",
+    "front feedback",
+    "back feedback"
+  ],
+  "pulse_length": 1,
+  "datarate": 100
+}
