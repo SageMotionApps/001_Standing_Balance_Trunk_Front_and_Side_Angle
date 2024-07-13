@@ -2,10 +2,8 @@ import logging
 from sage.base_app import BaseApp
 
 if __name__ == "__main__":
-    import Feedback
     from Quaternion import Quaternion
 else:
-    from . import Feedback
     from .Quaternion import Quaternion
 
 
