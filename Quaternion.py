@@ -4,22 +4,22 @@ import math
 
 class Quaternion:
     def __init__(self, w=None, x=None, y=None, z=None):
-            self.w = w
-            self.x = x
-            self.y = y
-            self.z = z        
+        self.w = w
+        self.x = x
+        self.y = y
+        self.z = z
 
     def updateFromRawData(self, data=None):
-            self.w = data["Quat1"]
-            self.x = data["Quat2"]
-            self.y = data["Quat3"]
-            self.z = data["Quat4"]
+        self.w = data["Quat1"]
+        self.x = data["Quat2"]
+        self.y = data["Quat3"]
+        self.z = data["Quat4"]
 
 
     def __str__(self):
         return f"Quaternion({self.w}, {self.x}, {self.y}, {self.z})"
 
-    def calculateVerticalSwayAngle(self):
+    def calculateTrunkSwayAngle(self):
         """
         This will calculate the Rotation Z->Y->Z for a node that that is switch pointing up.
         Note: This is about the z-axis (axis out of IMU board)
@@ -29,12 +29,11 @@ class Quaternion:
         t1 = -2 * (self.x * self.z - self.w * self.y)
 
         sway = np.arctan2(t0, t1)  # in radians
-        verticalsway = (sway * 180 / 3.14159 + 90)  # in deg and adjusted for keeping the sensor vertical
+        trunk_sway = (sway * 180 / 3.14159 + 90)  # in deg and adjusted for keeping the sensor vertical
 
-        # this_angle is corresponding to the sway angle when the sensor is kept vertical with switch pointing up
-        return verticalsway
+        return trunk_sway
 
-    def calculateFrontalSwayAngle(self):
+    def calculateTrunkFlexionAngle(self):
         """
         This will calculate the Rotation Z->Y->X for a node that that is switch pointing up.
         Note: This is about the x-axis (axis along short edge of IMU board)
@@ -45,7 +44,6 @@ class Quaternion:
         r32 = self.w * self.w - self.x * self.x - self.y * self.y + self.z * self.z
         res0 = np.arctan2(r31, r32)  # in radians
         res0 = (res0 * 180 / 3.14159 + 90)  # in deg and adjusted for alignment on the back
-        frontalsway = -res0  # adjust for sign convention
+        trunk_flexion = -res0  # adjust for sign convention
 
-        # this_angle is corresponding to the sway angle when the sensor is kept vertical with switch pointing up
-        return frontalsway
+        return trunk_flexion

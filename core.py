@@ -80,14 +80,14 @@ class Core(BaseApp):
         # Get next data packet
         data = self.my_sage.get_next_data()
 
-        #Get Quaternion Data        
-        self.current_quat.updateFromRawData(data=data[self.NodeNum_trunk])        
+        #Get Quaternion Data
+        self.current_quat.updateFromRawData(data=data[self.NodeNum_trunk])
 
         # Calculate the Trunk Side Angle (TSA)
-        TSA = self.current_quat.calculateVerticalSwayAngle()
+        TSA = self.current_quat.calculateTrunkSwayAngle()
 
         # Calculate the Trunk Front Angle (TFA)
-        TFA = self.current_quat.calculateFrontalSwayAngle()
+        TFA = self.current_quat.calculateTrunkFlexionAngle()
 
         # Turn feedback nodes on/off
         if self.config["feedback_enabled"]:
